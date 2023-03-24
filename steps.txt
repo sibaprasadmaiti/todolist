@@ -1,0 +1,77 @@
+============================
+Todolist App
+============================
+systems needs
+
+1) composer
+2) npm
+3) php
+
+Create a new project in your specific directory
+-------------------------
+composer create-project --prefer-dist laravel/laravel todolist
+Next....
+cd todolist
+Next....
+php artisan serve
+
+Set the envirment settings in .env file
+----------------------------------------
+
+Create model and migration the table
+-------------------------------------
+php artisan make:model Item -m
+
+set the table structure inside migration file
+
+Next
+
+php artisan migrate
+
+Create controller
+----------------------------------------
+php artisan make:controller ItemController --resource
+
+Define routes inside routes folder api.php
+------------------------------------------
+include your controller file like
+
+use App\Http\Controllers\ItemController;
+
+Route::get('/items', [ItemController::class, 'index']);
+Route::prefix('/item')->group(function(){
+    Route::post('/store', [ItemController::class, 'store']);
+    Route::put('/{id}', [ItemController::class, 'update']);
+    Route::delete('/{id}', [ItemController::class, 'destroy']);
+});
+
+Include your model inside controller file
+------------------------------------------
+use App\Models\Item;
+
+To test the all functionality via postman
+
+Next
+
+Install node all dependency
+-------------------------------
+npm install
+
+npm install vue
+
+Next set all vue file
+Next 
+
+npm run hot
+
+Next Refresh your project http://127.0.0.1:8000
+
+Install vue fontawesome
+------------------------
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+
+npm i --save @fortawesome/vue-fontawesome@2
+
+-----------------------------------------------
+To run the app : php artisan serve
